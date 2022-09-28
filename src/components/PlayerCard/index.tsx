@@ -1,4 +1,4 @@
-import ButtonIcon from "@components/ButtonIcon";
+import { ButtonIcon } from "@components/ButtonIcon";
 import React from "react";
 import { Container, Icon, Name } from "./styles";
 
