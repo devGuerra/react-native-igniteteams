@@ -1,5 +1,11 @@
 import React from "react";
-import { Alert, FlatList, TextInput } from "react-native";
+import {
+  Alert,
+  BackHandler,
+  FlatList,
+  Keyboard,
+  TextInput,
+} from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 import { AppError } from "@utils/AppError";
@@ -106,8 +112,21 @@ export function Players() {
     }
   }
 
+  const backAction = () => {
+    navigation.navigate("groups");
+
+    return true;
+  };
+
   React.useEffect(() => {
     fetchPlayersByTeam();
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
   }, [team]);
 
   return (
